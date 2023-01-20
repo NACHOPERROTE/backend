@@ -46,22 +46,60 @@
 
 
 
+//ENTREGA1
+
+// class ProductManager  { 
+
+//     constructor( products, title, description, price, thumbnail, code, stock){
+//     this.products = products
+//     this.title = title
+//     this.description = description
+//     this.price = price
+//     this.thumbnail= thumbnail
+//     this.code = code
+//     this.stock = stock
+//     this.id = ProductManager.creacionId()
+// }       
+
+    
+//     static creacionId(){
+//         if(this.creacioncreationId){
+//             this.creacioncreationId++
+//         }else{
+//             this.creacioncreationId = 1
+//         }
+//         return this.creacioncreationId
+//     }
+
+//     addProduct(title, description, price, thumbnail, code, stock) {
+//         this.products.push({ title, description, price, thumbnail, code, stock});
+//       }
+
+//     mostrarProductos(){
+//         return this.products;
+//     }
+
+// }
+
+// let getProducts = []
+
+// console.log(getProducts)
+
+// getProducts.addProduct("g","g", 200, "sin img", 250, 10);
+
+// console.log('Producto agregado', ProductManager.mostrarProductos());
+
+
+
+//ENTREGA 1 PRUEBA
 
 
 class ProductManager  { 
+    constructor(){
+        this.products = []
+        this.id = ProductManager.creacionId()
+    }
 
-    constructor( products, title, description, price, thumbnail, code, stock){
-    this.products = products
-    this.title = title
-    this.description = description
-    this.price = price
-    this.thumbnail= thumbnail
-    this.code = code
-    this.stock = stock
-    this.id = ProductManager.creacionId()
-}       
-
-    
     static creacionId(){
         if(this.creacioncreationId){
             this.creacioncreationId++
@@ -71,20 +109,30 @@ class ProductManager  {
         return this.creacioncreationId
     }
 
-    addProduct(title, description, price, thumbnail, code, stock) {
-        this.products.push({ title, description, price, thumbnail, code, stock});
-      }
+    
 
-    mostrarProductos(){
-        return this.products;
+    addProduct(title, description, price, thumbnail, code, stock,id){
+        
+        this.products.push({ title, description, price, thumbnail, code, stock,id})
+        
     }
+
+   
+
+
+   
+
 
 }
 
-let getProducts = []
+const productos = new ProductManager ()
 
-console.log(getProducts)
 
-getProducts.addProduct("g","g", 200, "sin img", 250, 10);
+productos.addProduct("hola", "hola", 200, "hola", 250, 300);
+productos.addProduct("hola", "hola", 300, "hola", 400, 500);
+productos.addProduct("hola", "hola", 500, "hola", 600, 700);
 
-console.log('Producto agregado', ProductManager.mostrarProductos());
+
+console.log(productos)
+
+
