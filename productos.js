@@ -83,11 +83,21 @@
 
 // let getProducts = []
 
-// console.log(getProducts)
 
-// getProducts.addProduct("g","g", 200, "sin img", 250, 10);
+// const producto1 = new ProductManager ("hola", "hola", 2000, "no img", 123, 10)
+// const producto2 = new ProductManager ("hola", "hola", 2000, "no img", 123, 10)
+// const producto3 = new ProductManager ("hola", "hola", 2000, "no img", 123, 10)
+// const producto4 = new ProductManager ("hola", "hola", 2000, "no img", 123, 10)
 
-// console.log('Producto agregado', ProductManager.mostrarProductos());
+// console.log('productos agregados' , producto1.mostrarProductos())
+
+
+// console.log(producto1)
+// console.log(producto2)
+// console.log(producto3)
+// console.log(producto4)
+
+
 
 
 
@@ -96,43 +106,71 @@
 
 class ProductManager  { 
     constructor(){
-        this.products = []
-        this.id = ProductManager.creacionId()
+        this.products = [];
+        this.id = 0;
+    }
+    // static crearId() {
+    //     if(this.creacionId) { 
+    //         this.creacionId++
+    //     } else {
+    //         this.creacionId = 1
+    //     }
+    //     return this.creacionId
+    // }
+
+
+
+    addProduct(title, description, price, thumbnail, code, stock){
+
+        
+        this.products.push({  id: this.id,
+                             title:title,
+                             description:description,
+                             price:price,
+                             thumbnail:thumbnail,
+                             code:code,
+                             stock:stock,
+                            });
+                            this.id++;         
     }
 
-    static creacionId(){
-        if(this.creacioncreationId){
-            this.creacioncreationId++
-        }else{
-            this.creacioncreationId = 1
-        }
-        return this.creacioncreationId
-    }
+    getProductById(id) {
 
+        return this.products.find(product => product.id === id);
     
+      }
 
-    addProduct(title, description, price, thumbnail, code, stock,id){
         
-        this.products.push({ title, description, price, thumbnail, code, stock,id})
-        
-    }
-
-   
-
-
-   
-
+    // addId(){
+    //     this.products.push({id, idN});
+    // }
 
 }
 
-const productos = new ProductManager ()
+let productos = new ProductManager ();
+productos.addProduct("hola", "hola", 200, "hola",20 ,10);
+productos.addProduct("hola", "hola", 200, "hola",20 ,20);
+productos.addProduct("hola", "hola", 200, "hola",20 ,10);
+productos.addProduct("hola", "hola", 200, "hola",20 ,20);
+productos.addProduct("hola", "hola", 200, "hola",20 ,20);
 
 
-productos.addProduct("hola", "hola", 200, "hola", 250, 300);
-productos.addProduct("hola", "hola", 300, "hola", 400, 500);
-productos.addProduct("hola", "hola", 500, "hola", 600, 700);
+// for (let i = 0; i < productos.length; i++) {
+//     productos[i].id = 0;
+// }
 
+// for(let i = 0; i <= productos.length; i++) {
+//     productos.addId(`id ${i}`, 1);
+//   }
 
 console.log(productos)
+
+
+const copia = productos.getProductById();
+
+console.log(copia)
+
+
+
 
 
