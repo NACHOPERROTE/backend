@@ -61,7 +61,7 @@
 //     this.id = ProductManager.creacionId()
 // }       
 
-    
+
 //     static creacionId(){
 //         if(this.creacioncreationId){
 //             this.creacioncreationId++
@@ -104,8 +104,8 @@
 //ENTREGA 1 PRUEBA
 
 
-class ProductManager  { 
-    constructor(){
+class ProductManager {
+    constructor() {
         this.products = [];
         this.id = 0;
     }
@@ -120,19 +120,25 @@ class ProductManager  {
 
 
 
-    addProduct(title, description, price, thumbnail, code, stock){
+    addProduct(title, description, price, thumbnail, code, stock) {
 
-        
-        this.products.push({  id: this.id,
-                             title:title,
-                             description:description,
-                             price:price,
-                             thumbnail:thumbnail,
-                             code:code,
-                             stock:stock,
-                            });
-                            this.id++;         
+
+        this.products.push({
+            id: this.id,
+            title: title,
+            description: description,
+            price: price,
+            thumbnail: thumbnail,
+            code: code,
+            stock: stock,
+        });
+        this.id++;
     }
+
+    // addId(){
+    //     this.products.push({id, idN});
+    // }
+
 
     getProductById(id) {
 
@@ -140,19 +146,24 @@ class ProductManager  {
     
       }
 
-        
-    // addId(){
-    //     this.products.push({id, idN});
-    // }
-
 }
 
-let productos = new ProductManager ();
-productos.addProduct("hola", "hola", 200, "hola",20 ,10);
-productos.addProduct("hola", "hola", 200, "hola",20 ,20);
-productos.addProduct("hola", "hola", 200, "hola",20 ,10);
-productos.addProduct("hola", "hola", 200, "hola",20 ,20);
-productos.addProduct("hola", "hola", 200, "hola",20 ,20);
+
+
+let getProductos = new ProductManager();
+
+getProductos.addProduct("lavandina" , "Anti Splash x1L", 1200 , "img", 1, 10) , 
+getProductos.addProduct("lavandina" , "Anti Splash x2L" , 1400, "img", 2, 10), 
+getProductos.addProduct("lavandina" , "Ayudin Clasica x1L" , 1600, "img", 3, 10),
+getProductos.addProduct("lavandina" , "Ayudin Clasica x2L" , 1600, "img", 4, 10),
+getProductos.addProduct("lavandina" , "Ayudin Clasica x4L" , 1600, "img", 5, 10),
+getProductos.addProduct("lavandina" , "Ayudin Clasica x5L" , 1600, "img", 6, 11),
+getProductos.addProduct("lavandina" , "Cloro 5L" , 1600, "img", 7, 10),
+getProductos.addProduct("lavandina" , "Ayudin Gel 700ml" , 1600, "img", 8, 10),
+getProductos.addProduct("lavandina" , "Vim Gel 700ml" , 1600, "img", 9, 10)
+
+
+
 
 
 // for (let i = 0; i < productos.length; i++) {
@@ -163,12 +174,14 @@ productos.addProduct("hola", "hola", 200, "hola",20 ,20);
 //     productos.addId(`id ${i}`, 1);
 //   }
 
-console.log(productos)
+console.log(getProductos)
+
+let validacion = getProductos.getProductById()
+
+console.log(validacion)
 
 
-const copia = productos.getProductById();
 
-console.log(copia)
 
 
 
