@@ -1,45 +1,38 @@
 import express from "express";
-import { ProductManager } from "../src/models/productsManager.js";
+import ruteoProductos from './routes/product.js'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+import multer from 'multer'
+
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'src/public/img')
+  },
+  filename: (req,file, cb) => {
+    cb(null, `${Date.now()}${file.originalname}`)
+  }
+})
+
+const upload= multer({storage: storage})
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
 const app = express()
-const PORT = 4000
+const PORT = 4000 
 
-const productManager = new ProductManager('src/models/productos.txt')
-
-app.use(express.json())
+//Middlewares
+app.use(express.json()) 
 app.use(express.urlencoded({extended: true}))
 
+//Routes
+app.use('/static', express.static(__dirname + '/public'))
+app.use('/api/product', ruteoProductos)
 
-
-//RUTAS
-
-
-app.get('/product', async (req, res) => { 
-    const { category } = req.query; 
-    console.log(category)
-    const productos = await productManager.getProducts()
-    console.log(productos)
-    res.send(JSON.stringify(productos))
-})
-
-app.get('/product/:id', async (req, res) => { 
-    const producto = await productManager.getProductById(req.params.id)
-    console.log(producto)
-    res.send(JSON.stringify(producto))
-})
-
-app.post('/product', async (req, res) => { 
-    let mensaje = await productManager.addProduct(req.body)
-    res.send(mensaje)
-})
-
-app.delete('/product/:id', async (req, res) => {
-    let mensaje = await productManager.deleteProduct(req.params.id) 
-    res.send(mensaje)
-})
-
-app.put('/product/:id', async (req, res) => { 
-    let mensaje = await productManager.loadProduct(req.params.id, req.body)
-    res.send(mensaje)
+app.post('/upload',upload.single('product'), (req,res) => {
+  console.log(req.file)
+  console.log(req.body)
+  res.send("Imagen cargada")
 })
 
 app.listen(PORT, () => {

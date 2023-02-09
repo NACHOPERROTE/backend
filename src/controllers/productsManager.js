@@ -13,6 +13,7 @@ export class ProductManager {
         }
         return this.idIncrement
     }
+    
 
     async addProduct(producto) {
         const prods = JSON.parse(await fs.readFile(this.path, 'utf-8'))
